@@ -9,7 +9,7 @@ import clearConteiner from './js/clearConteiner';
 import SearchParams from './js/searchParams';
 import { showMoreBtn, searchBtn } from './js/buttonClass';
 import addLoadingStylesOnBtn from './js/addLoadingStylesOnBtn';
-
+import smoothScroll from './js/smoothScroll';
 
 const ENDPOINT = 'https://pixabay.com/api/';
 const searchParams = new SearchParams({
@@ -36,6 +36,7 @@ function onShowMoreBtn() {
                 params: searchParams,
                 button: showMoreBtn});
             renderImage(images, refs.gallery);
+            smoothScroll();    
         })
         .catch(Notify.failure);  
 }
@@ -81,3 +82,6 @@ async function renderSumbmittedGallery() {
     }))
     .catch(Notify.failure);
 }
+
+
+

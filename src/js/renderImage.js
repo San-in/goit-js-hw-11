@@ -1,6 +1,4 @@
-import refs from "./refs";
-import SimpleLightbox from "simplelightbox";
-import "simplelightbox/dist/simple-lightbox.min.css";
+import lightbox from "./lightbox";
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import clearConteiner from './clearConteiner';
 import createMarkup from './createMarkup';
@@ -18,21 +16,5 @@ export default function renderImage(searchedImages, conteiner){
     searchBtn.disable();
     showMoreBtn.enable();
     showMoreBtn.updateTextContent('Load more');
-    setLightbox();
-    smoothScroll();    
-}
-
-function smoothScroll() {
-    const { height: cardHeight } = refs.gallery
-    .firstElementChild.getBoundingClientRect();
-    window.scrollBy({
-        top: cardHeight * 2,
-        behavior: "smooth",
-    });
-}
-
-function setLightbox() { 
-    return new SimpleLightbox('.gallery a', {
-    captionDelay: 250, 
-    });
+    lightbox.refresh();
 }
